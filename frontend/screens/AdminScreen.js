@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 
-const API_URL = "http://192.168.1.11:5000"; // 🔹 Cập nhật đúng IP backend
+const API_URL = "http://192.168.1.11:5000"; //
 
 export default function AdminScreen({ navigation }) {
   const [users, setUsers] = useState([]);

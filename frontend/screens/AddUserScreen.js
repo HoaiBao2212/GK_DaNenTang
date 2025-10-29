@@ -78,7 +78,7 @@ export default function AddUserScreen({ navigation }) {
         const ext = match ? match[1].toLowerCase() : "jpg";
         const mime = match ? `image/${ext === "jpg" ? "jpeg" : ext}` : "image/jpeg";
 
-        // Trên Android cần prepend 'file://' đôi khi không cần tuỳ SDK, nhưng thêm nếu thiếu
+        // Trên Android cần prepend '
         const localUri = Platform.OS === "android" && !uri.startsWith("file://") ? "file://" + uri : uri;
 
         formData.append("image", {

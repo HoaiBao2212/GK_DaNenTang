@@ -1,4 +1,4 @@
-// screens/EditUserScreen.js
+// frontend/screens/EditUserScreen.js
 import React, { useState } from "react";
 import {
   View,
