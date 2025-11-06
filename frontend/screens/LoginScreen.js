@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import axios from "axios";
 
-const API_URL = "http://192.168.1.11:5000";
+const API_URL = "http://10.103.107.87:5000";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
       const res = await axios.post(`${API_URL}/login`, { email, password });
       if (res.data.success) {
         Alert.alert("Thành công", "Đăng nhập thành công!");
-        navigation.replace("Admin"); // <-- CHUYỂN NGAY ĐẾN Admin
+        navigation.replace("Admin");
       } else {
         Alert.alert("Lỗi", res.data.message || "Sai thông tin đăng nhập!");
       }

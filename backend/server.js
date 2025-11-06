@@ -48,22 +48,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // ====== API ======
-// ===== LOGIN API =====
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
-
-  if (!user) return res.json({ success: false, message: "Không tìm thấy người dùng" });
-  if (user.password !== password)
-    return res.json({ success: false, message: "Sai mật khẩu" });
-
-  res.json({ success: true, message: "Đăng nhập thành công", user });
-});
-
 
 // 🟢 Kiểm tra server
 app.get("/", (req, res) => {
-  res.send("🟢 Server đang chạy với lưu ảnh trong MongoDB");
+  res.send("Server đang chạy trong MongoDB");
 });
 
 // 🟢 Lấy danh sách người dùng
@@ -71,7 +59,7 @@ app.get("/users", async (req, res) => {
   try {
     const users = await User.find();
 
-    // Trả về base64 thay vì Buffer
+    // Trả về base64
     const formatted = users.map((u) => ({
       _id: u._id,
       username: u.username,
@@ -89,6 +77,17 @@ app.get("/users", async (req, res) => {
   }
 });
 
+// ===== LOGIN API =====
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!user) return res.json({ success: false, message: "Không tìm thấy người dùng" });
+  if (user.password !== password)
+    return res.json({ success: false, message: "Sai mật khẩu" });
+
+  res.json({ success: true, message: "Đăng nhập thành công", user });
+});
 // 🟢 Thêm người dùng (upload ảnh vào MongoDB)
 app.post("/users", upload.single("image"), async (req, res) => {
   try {
@@ -155,5 +154,5 @@ app.delete("/users/:id", async (req, res) => {
 
 // ====== Chạy server ======
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server đang chạy tại http://192.168.1.11:${PORT}`);
+  console.log(`🚀 Server đang chạy tại http://10.103.107.87:${PORT}`);
 });

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
-const API_URL = "http://192.168.1.11:5000";
+const API_URL = "http://10.103.107.87:5000";
 
 export default function EditUserScreen({ route, navigation }) {
   const { user } = route.params;
@@ -125,7 +125,6 @@ export default function EditUserScreen({ route, navigation }) {
         style={styles.input}
         keyboardType="email-address"
       />
-      {/* 🔓 Mật khẩu không còn ẩn */}
       <TextInput
         placeholder="Mật khẩu"
         value={password}

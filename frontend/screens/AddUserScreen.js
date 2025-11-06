@@ -12,13 +12,13 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
-const API_URL = "http://192.168.1.11:5000";
+const API_URL = "http://10.103.107.87:5000";
 
 export default function AddUserScreen({ navigation }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState(null); // { uri, width, height, type, fileName }
+  const [image, setImage] = useState(null);
 
   // Yêu cầu quyền truy cập ảnh (chỉ 1 lần)
   useEffect(() => {
